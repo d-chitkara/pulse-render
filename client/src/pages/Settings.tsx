@@ -109,7 +109,7 @@ export default function Settings() {
           </CardHeader>
           <CardContent>
             <form onSubmit={passForm.handleSubmit((d) => passMutation.mutate(d as PasswordFields))} className="space-y-4">
-              <FormField label="Current password" error={passForm.formState.errors.currentPassword?.message as string | undefined}>
+              <FormField label="Current password" error={passForm.formState.errors.currentPassword?.message as string | undefined} inputId="current-password">
                 <div className="relative">
                   <Input
                     id="current-password"
@@ -125,7 +125,7 @@ export default function Settings() {
                 </div>
               </FormField>
 
-              <FormField label="New password" error={passForm.formState.errors.newPassword?.message as string | undefined}>
+              <FormField label="New password" error={passForm.formState.errors.newPassword?.message as string | undefined} inputId="new-password">
                 <div className="relative">
                   <Input
                     id="new-password"

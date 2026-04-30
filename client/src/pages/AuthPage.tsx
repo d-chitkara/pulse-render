@@ -50,7 +50,7 @@ export default function AuthPage() {
     resolver: zodResolver(isRegister ? registerSchema : loginSchema),
   })
 
-  // Step 1: send OTP (register) or log in directly
+  // Submit: register or log in
   const authMutation = useMutation({
     mutationFn: (data: any) =>
       isRegister ? authAPI.register(data) : authAPI.login(data),
@@ -114,10 +114,11 @@ export default function AuthPage() {
               <FormField
                 label="Password"
                 error={errors.password?.message as string}
+                inputId="auth-password"
               >
                 <div className="relative">
                   <Input
-                    id="password"
+                    id="auth-password"
                     type={showPassword ? "text" : "password"}
                     className="pr-10"
                     placeholder={
@@ -148,7 +149,7 @@ export default function AuthPage() {
               >
                 {authMutation.isPending
                   ? isRegister
-                    ? "Sending code…"
+                    ? "Creating account…"
                     : "Signing in…"
                   : isRegister
                     ? "Create account"
